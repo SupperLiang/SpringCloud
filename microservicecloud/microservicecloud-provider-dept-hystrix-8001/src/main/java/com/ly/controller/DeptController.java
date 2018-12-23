@@ -25,7 +25,7 @@ public class DeptController {
     }
 
     @GetMapping(value = "/dept/get/{id}")
-    @HystrixCommand(fallbackMethod = "processHystrix_Get")
+    @HystrixCommand(fallbackMethod = "processHystrix_Get")//服务熔断后需要执行的方法
     public Dept get(@PathVariable("id") Long id) {
         Dept dept = deptService.get(id);
         if (dept == null) {
